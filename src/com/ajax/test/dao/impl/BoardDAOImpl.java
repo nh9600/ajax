@@ -16,6 +16,39 @@ public class BoardDAOImpl implements BoardDAO {
 
 	@Override
 	public Map<String, String> selectBoard(Map<String, String> board) {
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		try {
+			con = DBCon.getCon();
+			String sql = "select * from board_info where bi_num=? ";
+			ps = con.prepareStatement(sql);
+			ps.setString(1, board.get("biNum"));
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				Map<String,String> b = new HashMap<>();
+				b.put("biNum", rs.getString("bi_num"));
+				b.put("biTitle", rs.getString("bi_title"));
+				b.put("biContent", rs.getString("bi_content"));
+				b.put("uiNum", rs.getString("ui_num"));
+				b.put("cretim", rs.getString("cretim"));
+				b.put("credat", rs.getString("credat"));
+				b.put("moddat", rs.getString("moddat"));
+				b.put("modtim", rs.getString("modtim"));
+				b.put("active", rs.getString("active"));
+				return b;
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(con!=null) {
+					con.close();
+				}
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
+		}
 		return null;
 	}
 
@@ -56,9 +89,33 @@ public class BoardDAOImpl implements BoardDAO {
 
 	@Override
 	public int insertBoard(Map<String, String> board) {
-		// TODO Auto-generated method stub
+		Connection con = null;
+		PreparedStatement ps = null;
+		try {
+			con = DBCon.getCon();
+			String sql = "insert into board_info(bi_num,bi_title,bi_content,ui_num,credat,cretim,moddat,modtim)";
+			sql += "values(seq_bi_num.nextval,?,?,?,to_char(sysdate,'yyyymmdd'), to_char(sysdate,'hh24miss'),to_char(sysdate,'yyyymmdd'), to_char(sysdate,'hh24miss'))";
+			ps=con.prepareStatement(sql);
+			ps.setString(1,board.get("biTitle"));
+			ps.setString(2,board.get("biContent"));
+			ps.setString(3,board.get("uiNum"));
+			return ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+
+			try {
+				if (con != null) {
+					con.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 		return 0;
 	}
+
+	
 
 	@Override
 	public int updateBoard(Map<String, String> board) {
@@ -68,7 +125,17 @@ public class BoardDAOImpl implements BoardDAO {
 
 	@Override
 	public int deleteBoard(Map<String, String> board) {
-		// TODO Auto-generated method stub
+		Connection con = null;
+		PreparedStatement ps = null;
+		try {
+			con = DBCon.getCon();
+			String sql = "delete from board_info where bi_num=? ";
+			ps = con.prepareStatement(sql);
+			ps.setString(1,board.get("biNum"));
+			return ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return 0;
 	}
 	public static void main(String[]args) {
