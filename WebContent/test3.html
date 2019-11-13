@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+이름:<input type="text" id="name"><br>
+나이:<input type="text" id="age"><br>
+주소:<input type="text" id="addr"><br>
+<script>
+var userinfo = {
+		name:'홍길동',
+		age:33,
+		addr:'서울시 강서구 등촌동'
+}
+var users = document.querySelectorAll('input');
+for(var input of users){
+	if(input.id){
+	//var user = users[i];
+	input.value = userinfo[input.id];
+
+	}
+}
+</script>
+</body>
+</html>

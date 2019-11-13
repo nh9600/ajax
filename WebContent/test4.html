@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<div>div1</div>
+<div>div2</div>
+<div>div3</div>
+<script>
+var contents = {
+		div1:'헬로우',
+		div2:'하하하',
+		div3:'헤헤헤'
+};
+var divs = document.querySelectorAll('div');
+for(var i=0;i<divs.length;i++){
+	var div = divs[i];
+	div.innerText = contents[div.innerText];//각각 값이 들어감 
+}
+</script>
+</body>
+</html>

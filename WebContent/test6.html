@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+게임<input type="checkbox" name="hobby" value="게임"><br>
+축구<input type="checkbox" name="hobby" value="축구"><br>
+영화<input type="checkbox" name="hobby" value="영화"><br>
+음악<input type="checkbox" name="hobby" value="음악"><br>
+<script>
+var hobby = "음악";
+document.querySelector('input[name=hobby][value=음악]').checked = true;
+
+/* var inputs = document.querySelectorAll('input');
+for(var input of inputs){
+	if(input.name == 'hobby' && inputs.value == hobby){
+		input.checked = true;
+	}
+} */
+</script>
+</body>
+</html>

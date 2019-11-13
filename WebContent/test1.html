@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<script>
+var arr = ["dog","cat","fish"];
+for(var i=0;i<arr.length;i++){
+	console.log(arr[i]);
+}
+for(var i in arr){//값을 알고 싶을때 
+	console.log(arr[i]);
+}
+for(var animal of arr){
+	console.log(animal);
+	//arr로 하면 ["dog","cat","fish"] 세번나옴 
+}
+</script>
+</body>
+</html>

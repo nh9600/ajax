@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<table border="1">
+		<tr>
+			<th>이름</th>
+			<td><input type="text" id="name"></td>
+		</tr>
+		<tr>
+			<th>나이</th>
+			<td><input type="number" id="age"></td>
+
+		</tr>
+		<tr>
+			<th>성별</th>
+			<td><input type="checkbox" name="trans" value="여자">여자 <input
+				type="checkbox" id="sidoSelect">남자</td>
+
+		</tr>
+		<tr>
+			<th>지역</th>
+			<td><select name="sido">
+					<option value="">선택</option>
+					<option value="">서울</option>
+					<option value="">인천</option>
+					<option value="">대구</option>
+					<option value="">부산</option>
+			</select> 
+			    <input type="text" name="Select" style="width: 118px">
+				<button onclick="sidoSelect()">선택</button></td>
+		</tr>
+		<tr>
+			<th colspan="2"><button>확인</button></th>
+		</tr>
+	</table>
+	<script>
+	var trans = '여자';
+	document.querySelector('input[name=trans][value=여자]').checked = true;
+	function sidoSelect(){
+		document.querySelector('input[name=Select]').value = document.querySelector('select[name=sido]').value;
+	}
+	var content={
+		name:'박하늘',
+		age:24
+	};
+	var inputs = document.querySelectorAll('input');
+	for(var input of inputs){
+		if(input.id){
+			input.value = content[input.id];
+		}
+	}
+	</script>
+</body>
+</html>

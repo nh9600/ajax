@@ -26,19 +26,19 @@ public class BoardController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// System.out.println("3.get방식이 일어날때마다 날 호출하겠지");
-		response.setContentType("application/json;charset=utf-8");
+		response.setContentType("application/json;charset=utf-8");//응답할때도 한글이 깨지지않게 해줌 
 		String cmd = request.getParameter("cmd");
 		PrintWriter pw = response.getWriter();
 		if ("list".equals(cmd)) {
 			List<Map<String, String>> boardList = bs.selectBoardList(null);
 			pw.println(g.toJson(boardList));
 			return;
-		} else if ("view".equals(cmd)) {
+		} else if ("view".equals(cmd)) {//값을 비교하기때문에 이퀄 
 			Map<String, String> param = new HashMap<>();
 			param.put("biNum", request.getParameter("biNum"));
 			Map<String, String> board = bs.selectBoard(param);
-			pw.print(g.toJson(board));
-		}
+			pw.print(g.toJson(board));//찍어
+		}//완료가 되면 4로 가
 		return;
 	}
 

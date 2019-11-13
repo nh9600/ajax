@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<script>
+var ani1 = {
+		name:"강아지"
+}
+var animals = [ani1,{
+	name:"고양이"
+}];
+
+//alert(animals[0].name);//0번째 방에 있는 애를 꺼냄(강아지)
+//alert(animals[1].name);//1번째 방에 있는 애를 꺼냄(고양이)
+alert(animals[1]['name']);//스트링으로 불러오기 
+</script>
+</body>
+</html>
