@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<script>
+var xhr = new XMLHttpRequest();//전화기를 만듦
+xhr.open('GET','/test/');//겟방식으로 전화를 걸겠다 
+xhr.onreadystatechange = function(){
+	if(xhr.readyState==4){
+		if(xhr.status==200){//성공했을때
+			console.log(JSON.parse(xhr.responseText));
+			document.write(xhr.responseText);//test.jsp안에 내용을 화면에 출력했을뿐
+			
+		}else{//찾아 봤는데 없더라==404 (전화 연결이 실패한건 아님)
+			document.write(xhr.responseText);//오류도 보여줘야함 
+		}
+	}
+}
+//
+xhr.send();//콜버튼(이걸 해야 전화를 걸 수 있음)
+</script>
+</body>
+</html>
