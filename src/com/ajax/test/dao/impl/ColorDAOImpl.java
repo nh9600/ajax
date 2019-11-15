@@ -21,8 +21,10 @@ public class ColorDAOImpl implements ColorDAO {
 		ResultSet rs = null;
 		try {
 			con = DBCon.getCon();
-			String sql="select * from color order by c_num desc";
+			String sql="select * from color c_name like? order by c_num desc";
+			
 			ps = con.prepareStatement(sql);
+			ps.setString(1,"%"++"%");
 			rs = ps.executeQuery();
 			List<Map<String,String>> colorList = new ArrayList<>();
 			while (rs.next()) {
